@@ -24,8 +24,8 @@ export const createUserController: RequestHandler = async (req, res) => {
   }
 
   try {
-    await createUser(result.data)
-    res.status(201)
+    const user = await createUser(result.data)
+    res.status(201).json(user)
   } catch (err) {
     res.status(500).json({ error: 'Ocorreu um erro no servidor.' })
   }

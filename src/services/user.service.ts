@@ -3,12 +3,14 @@ import { CreateUserDtoType } from '../dtos/create-user.dto'
 import { User } from '../interfaces/user.interface'
 import { prisma } from '../libs/prisma'
 
-export const createUser = async (data: CreateUserDtoType): Promise<void> => {
+export const createUser = async (
+  data: CreateUserDtoType,
+): Promise<Pick<User, 'id' | 'username' | 'email'>> => {
   const { email, password, username } = data
 
   const hashedPassword = await bcrypt.hash(password, 10)
 
-  await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       username,
       email,
@@ -20,6 +22,8 @@ export const createUser = async (data: CreateUserDtoType): Promise<void> => {
       email: true,
     },
   })
+
+  return user
 }
 
 export const findUserByEmail = async (email: string): Promise<User | null> => {
