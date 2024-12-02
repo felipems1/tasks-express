@@ -24,8 +24,9 @@ Este projeto é uma API de lista de tarefas que permite a criação, edição, a
 
 ## Como Usar
 
-1. Execute: `npm run dev`
-2. A API estará disponível em: `http://localhost:3333`
+1. **Opção com Docker:**  Se você tiver o Docker instalado, execute `docker compose up -d` para iniciar o banco de dados PostgreSQL.
+2. Execute: `npm run dev`
+3. A API estará disponível em: `http://localhost:3333`
 
 ## Funcionalidades Principais
 
